@@ -1,0 +1,112 @@
+## sxhkd keybinds
+## dkeg 2015
+
+## kill the session
+mod4 + ctrl + q 
+  pkill xinit 
+
+## kill active window
+alt + X
+	killw $(pfw)
+  #; \
+  #  closest.sh $(pfw) {east,south,north,west}
+
+## general 
+alt + p
+	osd
+
+mod4 + Return
+  urxvt; \
+    corner {md} $(pfw)
+
+mod4 + p 
+  demon	
+
+alt + b
+  iceweasel 
+
+## manipulating
+# move windows	
+mod4 + {h, j, k, l}
+	wmv {-10 0, 0 10, 0 -10, 10 0} $(pfw)
+
+# fast move windows
+mod4 + ctrl + {h, j, k, l}
+	wmv {-80 0, 0 80, 0 -80, 80 0} $(pfw)
+
+# tile
+mod4 + t
+  tile.sh $(pfw)
+  #~/git/contrib/tile.sh $(pfw)
+
+# switchgrid
+mod4 + shift + t
+  switchgrid $(pfw)
+# resize windows
+mod4 + shift + {h, j, k, l} 
+	wrs {-10 0, 0 10, 0 -10, 10 0} $(pfw)
+
+# fast resize windows
+mod4 + ctrl + shift + {h, j, k, l} 
+	wrs {-80 0, 0 80, 0 -80, 80 0} $(pfw)
+
+## cycling
+alt + {j,k}
+  focus.sh {next, prev}
+#alt + {h,j,k,l}
+#  focus {h,j,k,l}
+## grouping
+# add
+mod4 + shift + {1,2,3,4}
+  groaw -d all; \
+  groaw -a {1,2,3,4}
+
+# toggle
+mod4 + {1,2,3,4}
+  groaw -t {1,2,3,4}
+
+# remove
+mod4 + slash 
+  groaw -d all
+
+## move windos with mouse
+#mod4 + !button{1,3}
+#  {wmv,wrs} -a %i %i $(pfw)
+
+## window placement 
+mod4 + {y,u,b,n,g}
+  corner {tl,tr,bl,br,md} $(pfw)
+
+alt + f
+  fullscreen.sh $(pfw)
+  #~/git/contrib/fullscreen.sh $(pfw)
+
+## volume 
+alt + shift + {equal,minus,F8} 
+  ~/bin/volume {+,-,!}; \
+    popvol %\{c\} $(~/bin/volume level)
+
+## music
+mod4 + shift + equal
+  ~/bin/music +; \
+  popmus %\{c\} '' $(~/bin/music artist)
+
+mod4 + shift + minus
+  ~/bin/music -; \
+  popmus %\{c\} '' $(~/bin/music artist)
+
+#mod4 + shift + {equal,minus}
+#  ~/bin/music {+,-}; \
+  #popmus \%\{\c\}\ {'',''} $(~/bin/music artist)
+
+mod4 + shift + Home
+  ~/bin/music play; \
+  popmus %\{c\} '' $(~/bin/music title)
+
+mod4 + shift + ctrl + Home
+  ~/bin/music pause; \
+  popmus %\{c\} '' $(~/bin/music title)
+
+#mod4 + shift + {Home,ctrl + Home}
+#  ~/bin/music {play,pause}; \
+  #popmus %\{c\} {"",""} $(~/bin/music title)

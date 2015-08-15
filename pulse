@@ -1,0 +1,23 @@
+#!/bin/bash
+. $HOME/bin/colr
+#FREQ=${FREQ:-0.08}
+FREQ=${FREQ:-0.6}
+
+# pulsing red
+#COLORS=${xcol[@]}
+#COLORS="${xcol[4]} ${xcol[6]} ${xcol[9]}" #${xcol[10]}"
+COLORS="${xcol[6]} ${xcol[10]}"
+#COLORS="${xcol[4]} ${xcol[6]} ${xcol[9]} ${xcol[10]}"
+#COLORS="443232 553232 664444 774444 885656 aa5656 bb6464 cc6464 dd7272 ff7272 dd7272 cc6464 bb6464 aa5656 885656 774444 664444 553232 443232"
+
+# fast blinking
+#COLORS="ffffff eeeeee dddddd cccccc bbbbbb aaaaaa 888888 777777 666666 555555 444444 555555 666666 777777 888888 aaaaaa bbbbbb cccccc dddddd eeeeee"
+BW=$(wattr b $CUR)
+while :; do
+    for c in $COLORS; do
+        CUR=$(pfw)
+        BW=$(wattr b $CUR)
+        test "`wattr wh $CUR`" != "`wattr wh $(lsw -r)`" && chwb -s $BW -c $c $CUR
+        sleep $FREQ
+    done
+done

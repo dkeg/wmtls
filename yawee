@@ -1,0 +1,23 @@
+#!/bin/bash
+file=focus.sh
+
+while IFS=: read ev wid; do
+    case $ev in
+        # window creation
+        16) wattr o $wid || corner md $wid ;;
+
+        # mapping requests
+        19) wattr o $wid \
+            || vroum $wid ;;
+          #&& chwb2 -s 1 -c 0x323232 $wid \
+            #$file $wid ;;
+
+        # focus next window when deleting focused window
+        18) wattr $(pfw) || vroum prev 2>/dev/null;;
+        #18) wattr $(pfw) || $file prev 2>/dev/null;;
+
+        # entering window
+        7) wattr o $wid || vroum $wid ;;
+       # 7) wattr o $wid ||  $file $wid ;;
+    esac
+done
