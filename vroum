@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # z3bra - 2014 (c) wtfpl
 # window focus wrapper that sets borders and can focus next/previous window
