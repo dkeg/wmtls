@@ -16,8 +16,7 @@ alt + p
 	osd
 
 mod4 + Return
-  urxvt; \
-    corner {md} $(pfw)
+  urxvt
 
 mod4 + p 
   demon	
@@ -37,11 +36,11 @@ mod4 + ctrl + {h, j, k, l}
 # tile
 mod4 + t
   tile.sh $(pfw)
-  #~/git/contrib/tile.sh $(pfw)
 
 # switchgrid
 mod4 + shift + t
   switchgrid $(pfw)
+
 # resize windows
 mod4 + shift + {h, j, k, l} 
 	wrs {-10 0, 0 10, 0 -10, 10 0} $(pfw)
@@ -51,10 +50,9 @@ mod4 + ctrl + shift + {h, j, k, l}
 	wrs {-80 0, 0 80, 0 -80, 80 0} $(pfw)
 
 ## cycling
-alt + {j,k}
-  focus.sh {next, prev}
-#alt + {h,j,k,l}
-#  focus {h,j,k,l}
+alt + {h,j,k,l}
+  focus {h,j,k,l}
+
 ## grouping
 # add
 mod4 + shift + {1,2,3,4}
@@ -79,7 +77,6 @@ mod4 + {y,u,b,n,g}
 
 alt + f
   fullscreen.sh $(pfw)
-  #~/git/contrib/fullscreen.sh $(pfw)
 
 ## volume 
 alt + shift + {equal,minus,F8} 
@@ -95,10 +92,6 @@ mod4 + shift + minus
   ~/bin/music -; \
   popmus %\{c\} '' $(~/bin/music artist)
 
-#mod4 + shift + {equal,minus}
-#  ~/bin/music {+,-}; \
-  #popmus \%\{\c\}\ {'',''} $(~/bin/music artist)
-
 mod4 + shift + Home
   ~/bin/music play; \
   popmus %\{c\} '' $(~/bin/music title)
@@ -106,7 +99,3 @@ mod4 + shift + Home
 mod4 + shift + ctrl + Home
   ~/bin/music pause; \
   popmus %\{c\} '' $(~/bin/music title)
-
-#mod4 + shift + {Home,ctrl + Home}
-#  ~/bin/music {play,pause}; \
-  #popmus %\{c\} {"",""} $(~/bin/music title)

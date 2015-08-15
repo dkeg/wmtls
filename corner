@@ -14,7 +14,7 @@ H=$(wattr h $CUR)
 coord="36"
 X=$coord
 Y=$coord
-num=$(($coord/$BW))
+num=$coord/$BW
 
 case $1 in
     #tr) X=$((SW - W - BW*2)) ;;
