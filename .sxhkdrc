@@ -8,8 +8,6 @@ mod4 + ctrl + q
 ## kill active window
 alt + X
 	killw $(pfw)
-  #; \
-  #  closest.sh $(pfw) {east,south,north,west}
 
 ## general 
 alt + p
