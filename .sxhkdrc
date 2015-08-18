@@ -20,7 +20,7 @@ mod4 + p
   demon	
 
 alt + b
-  iceweasel 
+  iceweasel
 
 ## manipulating
 # move windows	
@@ -48,8 +48,10 @@ mod4 + ctrl + shift + {h, j, k, l}
 	wrs {-80 0, 0 80, 0 -80, 80 0} $(pfw)
 
 ## cycling
+#{ctrl,alt} + {h,j,k,l}
 alt + {h,j,k,l}
   focus {h,j,k,l}
+  #closest {h,j,k,l}
 
 ## grouping
 # add
@@ -75,6 +77,9 @@ mod4 + {y,u,b,n,g}
 
 alt + f
   fullscreen.sh $(pfw)
+
+alt + m
+  maxv $(pfw)
 
 ## volume 
 alt + shift + {equal,minus,F8} 

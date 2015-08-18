@@ -8,7 +8,8 @@
 CUR=$(pfw)
 
 usage() {
-    echo "usage: $(basename $0) <direction>" >&2
+    echo "usage: $(basename $0) <east|west|north|south>" >&2
+    #echo "usage: $(basename $0) <direction>" >&2
     exit 1
 }
 
