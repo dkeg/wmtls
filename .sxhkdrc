@@ -51,7 +51,6 @@ mod4 + ctrl + shift + {h, j, k, l}
 #{ctrl,alt} + {h,j,k,l}
 alt + {h,j,k,l}
   focus {h,j,k,l}
-  #closest {h,j,k,l}
 
 ## grouping
 # add
