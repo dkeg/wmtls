@@ -41,7 +41,7 @@ mod4 + shift + t
 
 # resize windows
 mod4 + shift + {h, j, k, l} 
-	wrs {-10 0, 0 10, 0 -10, 10 0} $(pfw)
+	wrs {-20 0, 0 20, 0 -20, 20 0} $(pfw)
 
 # fast resize windows
 mod4 + ctrl + shift + {h, j, k, l} 
@@ -68,8 +68,8 @@ mod4 + slash
   groaw -d all
 
 ## move windos with mouse
-#mod4 + !button{1,3}
-#  {wmv,wrs} -a %i %i $(pfw)
+mod4 + !button{1,3}
+  {wmv,wrs} -a %i %i $(pfw)
 
 ## window placement 
 mod4 + {y,u,b,n,g}
