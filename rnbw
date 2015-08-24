@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# z3bra - 2015 (c) wtfpl
+# make the current window "rainbowish"... Awesome idea from xero@nixers.net !
+# dkeg twist
+# drive pulsing colors based on battery state/level
+
+. $HOME/bin/colr
+
+FREQ=${FREQ:-0.6}
+CHR="${xcol[9]} ${xcol[3]}"
+STR="${xcol[5]} ${xcol[3]}"
+MED="${xcol[6]} ${xcol[3]}"
+LOW="${xcol[4]} ${xcol[3]}"
+#COLORS="${xcol[4]} ${xcol[6]} ${xcol[9]}" # ${xcol[10]}"
+#CUR=$(pfw)
+
+while :; do
+  BATT=/sys/class/power_supply/BAT0
+  CAPACITY=$(cat $BATT/capacity)
+  STATE=$(cat $BATT/status)
+        if [ ${STATE} = "Discharging" ] ; then
+        case ${CAPACITY} in
+          [0-9])  colors="$LOW" ;;
+          [1-3]*) colors="$LOW" ;;
+          [4-6]*) colors="$MED" ;;
+          [7-9]*) colors="$STR" ;;
+          [100])  colors="$STR" ;;
+        esac
+        else 
+          colors="$CHR"
+        fi
+    for c in $colors; do
+      CUR=$(pfw)
+      BW=$(wattr b $CUR)
+      chwb -s $BW -c $c $CUR 
+      sleep $FREQ
+    done
+done

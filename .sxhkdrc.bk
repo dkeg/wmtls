@@ -20,7 +20,7 @@ mod4 + p
   demon	
 
 alt + b
-  iceweasel 
+  iceweasel
 
 alt + d
   popmus %\{c\} $(date)
@@ -60,15 +60,16 @@ alt + {h,j,k,l}
 ## grouping
 # add
 mod4 + shift + {1,2,3,4}
-  groups -s $(pfw) {1,2,3,4}
+  groaw -d all; \
+  groaw -a {1,2,3,4}
 
 # toggle
 mod4 + {1,2,3,4}
-  groups -t {1,2,3,4}
+  groaw -t {1,2,3,4}
 
 # remove
 mod4 + slash 
-  groups -c $(pfw) all
+  groaw -d all
 
 ## move windos with mouse
 mod4 + !button{1,3}

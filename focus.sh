@@ -3,10 +3,13 @@
 # z3bra - 2014 (c) wtfpl
 # window focus wrapper that sets borders and can focus next/previous window
 . $HOME/bin/colr
+. $HOME/wmtls/bbdr
 
 BW=${BW:-1}                    # border width
-ACTIVE=${ACTIVE:-0x${xcol[6]}}     # active border color
+ACTIVE=${ACTIVE:-0x$bb}     # active border color
 INACTIVE=${INACTIVE:-0x${xcol[3]}} # inactive border color
+#ACTIVE=${ACTIVE:-0x${xcol[6]}}     # active border color
+#INACTIVE=${INACTIVE:-0x${xcol[3]}} # inactive border color
 #ACTIVE=${ACTIVE:-0xffffff}     # active border color
 #INACTIVE=${INACTIVE:-0x333333} # inactive border color
 

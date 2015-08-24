@@ -1,0 +1,34 @@
+    #!/bin/bash
+
+    test -z "$1" && usage || WID=$1
+    usage() {
+            echo "usage: $(basename $0) <wid>" >&2
+            exit 1
+    }
+    EXPANDIR=/tmp/.expan.h
+    
+    BW=$(wattr b $WID)
+    SW=$(( $(wattr w `lsw -r`) - 2*$BW))
+    SH=$(( $(wattr h `lsw -r`) - 2*$BW))
+
+    test -d $EXPANDIR || mkdir -p $EXPANDIR
+
+    is_maxed() {
+            WW=$(( `wattr w $WID` ))
+            test $WW -eq $SW
+    }
+
+    collapse() {
+            test -f $EXPANDIR/$WID || return
+            wtp $(grep $WID $EXPANDIR/$WID)
+            rm $EXPANDIR/$WID
+    }
+
+    expand_horz() {
+            wattr xywhi $WID > $EXPANDIR/$WID
+            GEOMETRY=$(printf '0 %d %d %d' $(wattr yh $WID) "$SW") 
+            echo $GEOMETRY 
+            wtp ${GEOMETRY} ${WID}
+    }
+
+    is_maxed && collapse || expand_horz

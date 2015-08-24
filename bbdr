@@ -1,0 +1,36 @@
+#!/bin/bash
+
+## dkeg 2015
+## battery status and level driven window borders 
+## source in focus.sh
+
+. $HOME/bin/colr
+## colors 
+R=${xcol[4]}
+Y=${xcol[6]}
+G=${xcol[5]}
+C=${xcol[9]}
+N=${xcol[1]}
+
+## get the information
+BATT=/sys/class/power_supply/BAT0
+#test -e $BATT || PS1='%'
+CAPACITY=$(cat $BATT/capacity)
+STATE=$(cat $BATT/status)
+
+
+## filter and colorize 
+      if [ ${STATE} = "Discharging" ] ; then
+      case ${CAPACITY} in
+        [0-9])  bb="$R" ;;
+        [1-3]*) bb=rnbw & ;;
+        [4-6]*) bb="$Y" ;;
+        [7-9]*) bb="$G" ;;
+        [100])  bb="$G" ;;
+      esac
+    else 
+      bb="$C"
+    fi
+
+## display
+echo "$bb" 
