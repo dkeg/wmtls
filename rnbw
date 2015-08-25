@@ -5,6 +5,7 @@
 # dkeg twist
 # drive pulsing colors based on battery state/level
 # only pulse when battery low, else static
+
 . $HOME/bin/colr
 
 FREQ=${FREQ:-0.6}
@@ -14,13 +15,6 @@ MED="${xcol[6]}"
 LOW="${xcol[4]}" # ${xcol[3]}"
 CRIT="${xcol[4]} ${xcol[3]}"
 NEUT="${xcol[3]}"
-#LOW="${xcol[4]} ${xcol[3]}"
-#CHR="${xcol[9]} ${xcol[3]}"
-#STR="${xcol[5]} ${xcol[3]}"
-#MED="${xcol[6]} ${xcol[3]}"
-#LOW="${xcol[4]} ${xcol[3]}"
-#COLORS="${xcol[4]} ${xcol[6]} ${xcol[9]}" # ${xcol[10]}"
-#CUR=$(pfw)
 
 while :; do
   BATT=/sys/class/power_supply/BAT0

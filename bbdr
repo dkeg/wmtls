@@ -2,7 +2,7 @@
 
 ## dkeg 2015
 ## battery status and level driven window borders 
-## source in focus.sh
+## source in focus.sh -> fcs
 
 . $HOME/bin/colr
 ## colors 
