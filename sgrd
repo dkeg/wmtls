@@ -7,7 +7,7 @@
 # it puts all the windows back to their original location and focuses the window
 # you switched to.
 # depends on: wew focus.sh
-
+file=fcs
 TEMP=$(mktemp) && wattr xywhi $(lsw) > $TEMP
 NB=$(wc -l < $TEMP) # NB as in NumBer of windows
 
@@ -84,7 +84,7 @@ wew -m 4 | while IFS=: read ev wid; do
         while read line; do
             wtp $line
         done < $TEMP
-        focus.sh $wid
+        fcs $wid
         killall wew
     fi
 done

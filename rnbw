@@ -4,14 +4,21 @@
 # make the current window "rainbowish"... Awesome idea from xero@nixers.net !
 # dkeg twist
 # drive pulsing colors based on battery state/level
-
+# only pulse when battery low, else static
 . $HOME/bin/colr
 
 FREQ=${FREQ:-0.6}
-CHR="${xcol[9]} ${xcol[3]}"
-STR="${xcol[5]} ${xcol[3]}"
-MED="${xcol[6]} ${xcol[3]}"
-LOW="${xcol[4]} ${xcol[3]}"
+CHR="${xcol[9]}"
+STR="${xcol[5]}"
+MED="${xcol[6]}"
+LOW="${xcol[4]}" # ${xcol[3]}"
+CRIT="${xcol[4]} ${xcol[3]}"
+NEUT="${xcol[3]}"
+#LOW="${xcol[4]} ${xcol[3]}"
+#CHR="${xcol[9]} ${xcol[3]}"
+#STR="${xcol[5]} ${xcol[3]}"
+#MED="${xcol[6]} ${xcol[3]}"
+#LOW="${xcol[4]} ${xcol[3]}"
 #COLORS="${xcol[4]} ${xcol[6]} ${xcol[9]}" # ${xcol[10]}"
 #CUR=$(pfw)
 
@@ -21,11 +28,11 @@ while :; do
   STATE=$(cat $BATT/status)
         if [ ${STATE} = "Discharging" ] ; then
         case ${CAPACITY} in
-          [0-9])  colors="$LOW" ;;
-          [1-3]*) colors="$LOW" ;;
-          [4-6]*) colors="$MED" ;;
-          [7-9]*) colors="$STR" ;;
-          [100])  colors="$STR" ;;
+          [0-9])  colors="$CRIT" ;;
+          [1-2]*) colors="$LOW"  ;;
+          [3-6]*) colors="$MED"  ;;
+          [7-9]*) colors="$STR"  ;;
+          [100])  colors="$STR"  ;;
         esac
         else 
           colors="$CHR"
@@ -33,7 +40,7 @@ while :; do
     for c in $colors; do
       CUR=$(pfw)
       BW=$(wattr b $CUR)
-      chwb -s $BW -c $c $CUR 
+      test "`wattr wh $CUR`" != "`wattr wh $(lsw -r)`" && chwb -s $BW -c $c $CUR 
       sleep $FREQ
     done
 done
