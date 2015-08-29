@@ -2,11 +2,15 @@
 #
 # z3bra - 2014 (c) wtfpl
 # window focus wrapper that sets borders and can focus next/previous window
+# uncomment the active with bb to use bbdr
+# bbdr colors active border based on battery state/level
+# depends bbdr
+
 . $HOME/bin/colr
 . $HOME/wmtls/bbdr
 
 BW=${BW:-1}                        # border width
-ACTIVE=${ACTIVE:-0x$bb}            # active border color
+ACTIVE=${ACTIVE:-0x$bb}            # battery driven active border color
 INACTIVE=${INACTIVE:-0x${xcol[3]}} # inactive border color
 
 # get current window id

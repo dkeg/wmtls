@@ -6,11 +6,11 @@
 
 . $HOME/bin/colr
 ## colors 
-R=${xcol[4]}
-Y=${xcol[6]}
-G=${xcol[5]}
-C=${xcol[9]}
-N=${xcol[1]}
+R=${xcol[4]}    #red
+Y=${xcol[6]}    #yellow
+G=${xcol[5]}    #green
+C=${xcol[9]}    #cyan
+N=${xcol[1]}    #bold black
 
 ## get the information
 BATT=/sys/class/power_supply/BAT0
@@ -22,8 +22,8 @@ STATE=$(cat $BATT/status)
  if [ ${STATE} = "Discharging" ] ; then
    case ${CAPACITY} in
    [0-9])  bb="$R" ;;
-   [1-3]*) bb="$R" ;;
-   [4-6]*) bb="$Y" ;;
+   [1-2]*) bb="$R" ;;
+   [3-6]*) bb="$Y" ;;
    [7-9]*) bb="$G" ;;
    [100])  bb="$G" ;;
    esac

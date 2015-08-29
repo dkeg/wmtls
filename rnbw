@@ -3,19 +3,24 @@
 # z3bra - 2015 (c) wtfpl
 # make the current window "rainbowish"... Awesome idea from xero@nixers.net !
 # dkeg twist
-# drive pulsing colors based on battery state/level
-# only pulse when battery low, else static
+# pulsing colors based on battery state/level
 
 . $HOME/bin/colr
 
 FREQ=${FREQ:-0.6}
-CHR="${xcol[9]}"
-STR="${xcol[5]}"
-MED="${xcol[6]}"
-LOW="${xcol[4]}" # ${xcol[3]}"
-CRIT="${xcol[4]} ${xcol[3]}"
-NEUT="${xcol[3]}"
-
+## use this section for pulse only when critical 
+NEUT="${xcol[3]}"             #bold black
+CHR="${xcol[9]}"              #cyan
+STR="${xcol[5]}"              #green
+MED="${xcol[6]}"              #yellow
+LOW="${xcol[4]}"              #red
+CRIT="${xcol[4]} #$NEUT"      #red
+## uncomment this section for always pulsing; comment out above
+#CHR="${xcol[9]} $NEUT"
+#STR="${xcol[5]} $NEUT"
+#MED="${xcol[6]} $NEUT"
+#LOW="${xcol[4]} $NEUT"
+#CRIT="${xcol[4]} $NEUT"
 while :; do
   BATT=/sys/class/power_supply/BAT0
   CAPACITY=$(cat $BATT/capacity)
