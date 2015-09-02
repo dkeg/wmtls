@@ -14,7 +14,6 @@ N=${xcol[1]}    #bold black
 
 ## get the information
 BATT=/sys/class/power_supply/BAT0
-#test -e $BATT || PS1='%'
 CAPACITY=$(cat $BATT/capacity)
 STATE=$(cat $BATT/status)
 
