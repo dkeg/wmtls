@@ -1,4 +1,6 @@
     #!/bin/bash
+  ## POC - maximize horizontally
+  ## NOT WORKING
 
     test -z "$1" && usage || WID=$1
     usage() {

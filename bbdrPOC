@@ -3,24 +3,34 @@
 ## dkeg 2015
 ## battery status and level driven window borders 
 ## source in focus.sh -> fcs
+## enhanced bbdr version
+## attempting to mimic pulsing borders here
+## POC ... NOT WORKING
 
 . $HOME/bin/colr
+
+FREQ=${FREQ:-0.6}
 ## colors 
 R=$red
 Y=$ylw
 G=$grn
 C=$cyn
 N=$bblk
+RR="$red $N"
 
 ## get the information
 BATT=/sys/class/power_supply/BAT0
-CAPACITY=$(cat $BATT/capacity)
+CAP=$(cat $BATT/capacity)
 STATE=$(cat $BATT/status)
 
-## filter and colorize 
+## filter and colorize
+while :; do
  if [ ${STATE} = "Discharging" ] ; then
-   case ${CAPACITY} in
-   [0-9])  bb="$R" ;;
+   case ${CAP} in
+   [0-9])  bb="$RR"
+    #while :; do
+    #done
+    ;; 
    [1-2]*) bb="$R" ;;
    [3-6]*) bb="$Y" ;;
    [7-9]*) bb="$G" ;;
@@ -29,3 +39,11 @@ STATE=$(cat $BATT/status)
  else 
   bb="$C"
  fi
+      for c in $bb; do
+        CUR=$(pfw)
+        BW=$(wattr b $CUR)
+        chwb -s $BW -c $c $CUR
+        sleep $FREQ
+      done
+    done
+

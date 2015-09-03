@@ -9,12 +9,18 @@
 
 FREQ=${FREQ:-0.6}
 ## use this section for pulse only when critical 
-NEUT="${xcol[3]}"             #bold black
-CHR="${xcol[9]}"              #cyan
-STR="${xcol[5]}"              #green
-MED="${xcol[6]}"              #yellow
-LOW="${xcol[4]}"              #red
-CRIT="${xcol[4]} #$NEUT"      #red
+NEUT="$bblk"
+CHR="$cyn"
+STR="$grn"
+MED="$ylw"
+LOW="$red"
+CRIT="$red $NEUT"
+#NEUT="${xcol[3]}"             #bold black
+#CHR="${xcol[9]}"              #cyan
+#STR="${xcol[5]}"              #green
+#MED="${xcol[6]}"              #yellow
+#LOW="${xcol[4]}"              #red
+#CRIT="${xcol[4]} $NEUT"       #red
 ## uncomment this section for always pulsing; comment out above
 #CHR="${xcol[9]} $NEUT"
 #STR="${xcol[5]} $NEUT"
@@ -39,7 +45,8 @@ while :; do
     for c in $colors; do
       CUR=$(pfw)
       BW=$(wattr b $CUR)
-      test "`wattr wh $CUR`" != "`wattr wh $(lsw -r)`" && chwb -s $BW -c $c $CUR 
+      chwb -s $BW -c $c $CUR 
+      #test "`wattr wh $CUR`" != "`wattr wh $(lsw -r)`" && chwb -s $BW -c $c $CUR 
       sleep $FREQ
     done
 done

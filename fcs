@@ -11,7 +11,9 @@
 
 BW=${BW:-1}                        # border width
 ACTIVE=${ACTIVE:-0x$bb}            # battery driven active border color
-INACTIVE=${INACTIVE:-0x${xcol[3]}} # inactive border color
+#ACTIVE=${ACTIVE:-0x${xcol[0]}}            # battery driven active border color
+INACTIVE=${INACTIVE:-0x$bblk} # inactive border color
+#INACTIVE=${INACTIVE:-0x${xcol[3]}} # inactive border color
 
 # get current window id
 CUR=$(pfw)
