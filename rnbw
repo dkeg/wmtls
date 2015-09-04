@@ -7,46 +7,38 @@
 
 . $HOME/bin/colr
 
+## keep battery out of it
+## comment out battery lines
+#colors="$blu $bblk $ylw"
+
 FREQ=${FREQ:-0.6}
-## use this section for pulse only when critical 
-NEUT="$bblk"
+
+## only pulse when critical
 CHR="$cyn"
 STR="$grn"
 MED="$ylw"
 LOW="$red"
-CRIT="$red $NEUT"
-#NEUT="${xcol[3]}"             #bold black
-#CHR="${xcol[9]}"              #cyan
-#STR="${xcol[5]}"              #green
-#MED="${xcol[6]}"              #yellow
-#LOW="${xcol[4]}"              #red
-#CRIT="${xcol[4]} $NEUT"       #red
-## uncomment this section for always pulsing; comment out above
-#CHR="${xcol[9]} $NEUT"
-#STR="${xcol[5]} $NEUT"
-#MED="${xcol[6]} $NEUT"
-#LOW="${xcol[4]} $NEUT"
-#CRIT="${xcol[4]} $NEUT"
+CRIT="$red $bblk"
+
 while :; do
   BATT=/sys/class/power_supply/BAT0
   CAPACITY=$(cat $BATT/capacity)
   STATE=$(cat $BATT/status)
-        if [ ${STATE} = "Discharging" ] ; then
-        case ${CAPACITY} in
-          [0-9])  colors="$CRIT" ;;
-          [1-2]*) colors="$LOW"  ;;
-          [3-6]*) colors="$MED"  ;;
-          [7-9]*) colors="$STR"  ;;
-          [100])  colors="$STR"  ;;
-        esac
-        else 
-          colors="$CHR"
-        fi
+  if [ ${STATE} = "Discharging" ] ; then
+    case ${CAPACITY} in
+      [0-9])  colors="$CRIT" ;;
+      [1-2]*) colors="$LOW"  ;;
+      [3-6]*) colors="$MED"  ;;
+      [7-9]*) colors="$STR"  ;;
+      [100])  colors="$STR"  ;;
+    esac
+  else 
+    colors="$CHR"
+  fi
     for c in $colors; do
       CUR=$(pfw)
       BW=$(wattr b $CUR)
       chwb -s $BW -c $c $CUR 
-      #test "`wattr wh $CUR`" != "`wattr wh $(lsw -r)`" && chwb -s $BW -c $c $CUR 
       sleep $FREQ
     done
 done
