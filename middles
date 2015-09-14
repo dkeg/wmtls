@@ -26,3 +26,11 @@ case $1 in
 esac
 
 wtp $X $Y $W $H $CUR
+
+#mdls=("uy","y","g","u")
+#for i in "${mdls[@]}"                           
+#  do                                            
+#    echo $i                                    
+#  done
+
+#  rndm=$i

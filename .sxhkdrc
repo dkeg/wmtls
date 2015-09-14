@@ -77,13 +77,13 @@ mod4 + {y,u,b,n,g}
   corner {tl,tr,bl,br,md} $(pfw)
 
 alt + f
-  flscn $(pfw)
+  max $(pfw)
 
 alt + m
-  maxv $(pfw)
+  max -v $(pfw)
 
 alt + shift + m
-  maxh $(pfw)
+  max -h $(pfw)
 
 ## volume 
 alt + shift + {equal,minus,F8} 

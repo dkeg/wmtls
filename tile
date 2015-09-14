@@ -5,8 +5,8 @@
 
 # default values for gaps and master area
 PANEL=${PANEL:-0}
-GAP=${GAP:-20}
-MASTER=${MASTER:-900}
+GAP=${GAP:-40}
+MASTER=${MASTER:-700}
 
 # get current window id and its borderwidth
 PFW=$(pfw)
@@ -31,7 +31,8 @@ wtp $GAP $Y $((MASTER - GAP - 2*BW)) $((SH - GAP)) $PFW
 # and now, stack up all remaining windows on the right
 X=$((MASTER + GAP))
 W=$((SW - MASTER - GAP))
-H=$((SH / MAX - GAP - 2*BW))
+H=$((SH / MAX - GAP - BW))
+#H=$((SH / MAX - GAP - 2*BW))
 
 for wid in $(lsw|grep -v $PFW); do
     wtp $X $Y $W $H $wid
