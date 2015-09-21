@@ -85,6 +85,10 @@ alt + m
 alt + shift + m
   max -h $(pfw)
 
+## scratchpad
+alt + w 
+  mapw -t $(more ~/.scratch)
+
 ## volume 
 alt + shift + {equal,minus,F8} 
   ~/bin/volume {+,-,!}; \
