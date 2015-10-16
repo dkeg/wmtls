@@ -2,19 +2,26 @@
 # focus_watcher renamed to fw
 # and taking benefit functionality from yawee
 
-wall=$(cat ~/.xinitrc|grep hsetroot|cut -d ' ' -f3|awk '{sub(/&/,"");print}')
-BLUR=10
+# get wall from .xinitrc & set attributes
+#wall=$(cat ~/.xinitrc|grep hsetroot|cut -d ' ' -f3|awk '{sub(/&/,"");print}')
+wall=$(cat ~/.xinitrc|grep hsetroot|awk '{sub(/&/,"");print}')
+#BLUR=25
+BLUR='-blur 25'
+BRT='-brightness -0.15'
 
-blur(){
-  hsetroot -fill $wall -blur ${1:-$BLUR}
+# bg effects on new window
+effect(){
+#  $wall -brightness -0.15 -blur ${1:-$BLUR}
+  $wall $BRT $BLUR 
 }
+
 file=fcs
 
 while IFS=: read ev wid; do
     case $ev in
         # window creation
         16) wattr o $wid || corner md $wid 
-        test "$(lsw)" = "$wid" && blur ;;
+        test "$(lsw)" = "$wid" && effect ;;
 
         # mapping requests
         19) wattr o $wid \
@@ -22,7 +29,7 @@ while IFS=: read ev wid; do
 
         # focus next window when deleting focused window
         18) wattr $(pfw) || $file prev 2>/dev/null
-            test -z "$(lsw)" && blur 0 ;;
+            test -z "$(lsw)" && effect 0 ;;
 
         # entering window
         7) wattr o $wid || $file $wid ;;

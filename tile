@@ -2,11 +2,13 @@
 #
 # z3bra - 2014 (c) wtfpl
 # arrange windows in a tiled pattern
+# dkeg update OCT 2015
+# fixed offset layout if more that 1 window in stacking area
 
 # default values for gaps and master area
 PANEL=${PANEL:-0}
-GAP=${GAP:-50}
-MASTER=${MASTER:-700}
+GAP=${GAP:-15}
+MASTER=${MASTER:-650}
 
 # get current window id and its borderwidth
 PFW=$(pfw)
@@ -31,10 +33,18 @@ wtp $GAP $Y $((MASTER - GAP - 2*BW)) $((SH - GAP)) $PFW
 # and now, stack up all remaining windows on the right
 X=$((MASTER + GAP))
 W=$((SW - MASTER - GAP))
-#H=$((SH / MAX - GAP - 2*BW)) // incorrect. screws alignment
-H=$((SH / MAX - GAP - BW))
 
+# check number of windows for stacking area
+# adjust padding calculation accordingly
+if [ $MAX -ge "1" ]; then
+  H=$((SH / MAX - GAP - BW)) 
+else
+  H=$((SH / MAX - GAP - 2*BW))
+fi
+
+# removed 2*BW due to offset stacking area 
+# compared to master
 for wid in $(lsw|grep -v $PFW); do
     wtp $X $Y $W $H $wid
-    Y=$((Y + H + GAP + 2*BW))
+    Y=$((Y + H + GAP + BW))
 done

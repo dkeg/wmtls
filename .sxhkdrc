@@ -11,16 +11,21 @@ alt + q
 
 ## general 
 alt + p
-	osd
+   popstat	
 
 mod4 + Return
-  urxvt
+  urxvtc
 
 mod4 + p 
   demon	
 
 alt + b
   iceweasel 
+  #touch $HOME/tmp/groups/groups.2
+  #sleep 1 && xdotool key "mod4 + shift + 2" $(pfw)
+
+alt + n
+  leafpad
 
 alt + d
   popmus %\{c\} $(date)
@@ -84,6 +89,10 @@ alt + m
 
 alt + shift + m
   max -h $(pfw)
+
+## compton toggle
+alt + {_,shift + }c
+  ~/bin/comp {more,less} 
 
 ## scratchpad
 alt + w 
