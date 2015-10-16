@@ -5,14 +5,12 @@
 # get wall from .xinitrc & set attributes
 #wall=$(cat ~/.xinitrc|grep hsetroot|cut -d ' ' -f3|awk '{sub(/&/,"");print}')
 wall=$(cat ~/.xinitrc|grep hsetroot|awk '{sub(/&/,"");print}')
-#BLUR=25
-BLUR='-blur 25'
-BRT='-brightness -0.15'
+BLUR=25
+BRT="-0.15"
 
 # bg effects on new window
 effect(){
-#  $wall -brightness -0.15 -blur ${1:-$BLUR}
-  $wall $BRT $BLUR 
+  $wall -brightness ${1:-$BRT} -blur ${1:-$BLUR}
 }
 
 file=fcs
