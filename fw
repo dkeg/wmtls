@@ -6,7 +6,7 @@
 #wall=$(cat ~/.xinitrc|grep hsetroot|cut -d ' ' -f3|awk '{sub(/&/,"");print}')
 wall=$(cat ~/.xinitrc|grep hsetroot|awk '{sub(/&/,"");print}')
 BLUR=25
-BRT="-0.15"
+BRT="-0.05"
 
 # bg effects on new window
 effect(){

@@ -18,7 +18,7 @@
 - rainbow -> rnbw
   * pulsing borders; see below for mods
 - tile.sh -> tile
-  * fixed offset gap/border when more than 1 window in stacking area
+  * horrible fix of offset gap/border when more than 1 window in stacking area
 - focus_watcher.sh -> fw
   * focus newly spawned window, focus next when window in focus closed
 - corner
