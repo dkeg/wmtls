@@ -7,12 +7,13 @@
 
 # default values for gaps and master area
 PANEL=${PANEL:-0}
-GAP=${GAP:-25}
+GAP=${GAP:-35}
 MASTER=${MASTER:-650}
 
 # get current window id and its borderwidth
 PFW=$(pfw)
 BW=$(wattr b $PFW)
+P=$BW/4
 
 # get root window's size (beware, multi-head setups...)
 ROOT=$(lsw -r)
@@ -38,9 +39,9 @@ W=$((SW - MASTER - GAP))
 # adjust padding calculation accordingly
 # horrible , I know
 case $MAX in
-  1) H=$((SH / MAX - GAP - BW/4-BW/2)) ;;
+  1) H=$((SH / MAX - GAP - BW/4-BW/2+BW)) ;;
   2) H=$((SH / MAX - GAP - BW)) ;;
-  3) H=$((SH / MAX - GAP - $MAX*BW/2+BW/2-BW/2)) ;;
+  3) H=$((SH / MAX - GAP - $MAX*BW/2+BW/2-BW/2+$P)) ;;
   4) H=$((SH / MAX - GAP - $MAX*BW/2+BW/2)) ;;
   *) usage 
   #*) H=$((SH / MAX - GAP - 2*BW))
