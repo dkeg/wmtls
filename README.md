@@ -25,6 +25,7 @@
   * padding 
 - maximize -> max
   * like cwm and 2bwm. Max vertically, horizontally, or fullscreen. Thannks z3bra!
+  * added maximize (slight gap all around) like cwm
 
 #### I have also made a few modifications
 - fcs sources xcolors for active and inactive borders

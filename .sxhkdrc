@@ -81,14 +81,14 @@ mod4 + !button{1,3}
 mod4 + {y,u,b,n,g}
   corner {tl,tr,bl,br,md} $(pfw)
 
-alt + f
-  max $(pfw)
+#alt + f
+#  max $(pfw)
 
-alt + m
-  max -v $(pfw)
+alt + {_,shift + }f
+  max -{m,f} $(pfw)
 
-alt + shift + m
-  max -h $(pfw)
+alt + {_,shift +}m
+  max -{v,h} $(pfw)
 
 ## compton toggle
 alt + {_,shift + }c
