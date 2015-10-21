@@ -11,7 +11,7 @@ H=$(wattr h $CUR)
 
 #X=0
 #Y=0
-coord="16"
+coord="70"
 X=$coord
 Y=$coord
 num=$coord/$BW

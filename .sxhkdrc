@@ -16,6 +16,9 @@ alt + p
 mod4 + Return
   urxvtc
 
+alt + Return
+  urxvt
+
 mod4 + p 
   demon	
 

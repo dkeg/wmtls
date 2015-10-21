@@ -28,7 +28,7 @@ shift $((OPTIND -1))
 test -n "$1" && WID=$1 || usage
 
 MAX=${MAX:-full}
-EXPANDIR=$HOME/tmp/.expan.d
+EXPANDIR=/tmp/.expan.d
 PAD=$bar3h
 #PAD=22
 BW=$(wattr b $WID)

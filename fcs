@@ -10,7 +10,7 @@
 . $HOME/wmtls/bbdr
 
 # border width
-BW=${BW:-4}
+BW=${BW:-3}
 
 ACTIVE=${ACTIVE:-0x$bblk}   # inactive border
 INACTIVE=${INACTIVE:-0x$bb} # battery driven border
