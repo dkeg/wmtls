@@ -10,10 +10,12 @@
 . $HOME/wmtls/bbdr
 
 # border width
-BW=${BW:-3}
+BW=${BW:-2}
 
-ACTIVE=${ACTIVE:-0x$bblk}   # inactive border
-INACTIVE=${INACTIVE:-0x$bb} # battery driven border
+# border color
+ACTIVE=${ACTIVE:-0x$bb}
+#ACTIVE=${ACTIVE:-0x$cyn} 
+INACTIVE=${INACTIVE:-0x$blk}
 
 # get current window id
 CUR=$(pfw)

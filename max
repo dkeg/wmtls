@@ -2,11 +2,11 @@
 # rockin' script by z3bra
 # includes fullscreen, max h, and max v
 # thank you!
-# modified by dkey
+# modified by dkeg
 # now includes maximize (like cwm), slight gaps all around
 # also includes a fullscreen with panel gap
 
-. $HOME/bin/barconf
+#. $HOME/bin/barconf
 
 usage() {
         echo "usage: $(basename $0) [-hvmpf] wid" >&2
@@ -29,12 +29,15 @@ test -n "$1" && WID=$1 || usage
 
 MAX=${MAX:-full}
 EXPANDIR=/tmp/.expan.d
-PAD=$bar3h
-#PAD=22
+#PAD=$bar3h
+PAD=105
+PAD2=12
 BW=$(wattr b $WID)
 SW=$(( $(wattr w `lsw -r`) - 2*$BW))
 SH=$(( $(wattr h `lsw -r`) - 2*$BW))
-SHP=$(( $(wattr h `lsw -r`) - 2*$BW - $PAD))
+SHP=$(( $(wattr h `lsw -r`) - 2*$BW - $PAD2))
+#SWM=$(( $(wattr w `lsw -r`) - 8*$BW - 8*$PAD))
+#SHM=$(( $(wattr h `lsw -r`) - 8*$BW - 8*$PAD))
 SWM=$(( $(wattr w `lsw -r`) - 2*$BW - 2*$PAD))
 SHM=$(( $(wattr h `lsw -r`) - 2*$BW - 2*$PAD))
 

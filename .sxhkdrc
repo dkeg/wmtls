@@ -22,8 +22,8 @@ alt + Return
 mod4 + p 
   demon	
 
-alt + b
-  iceweasel 
+alt + {_,shift +}b
+  {vimb,conkeror}
   #touch $HOME/tmp/groups/groups.2
   #sleep 1 && xdotool key "mod4 + shift + 2" $(pfw)
 
@@ -31,7 +31,7 @@ alt + n
   leafpad
 
 alt + d
-  popmus %\{c\} $(date)
+  popper %\{c\} $(date  +'%R  %d %b')
 
 ## manipulating
 # move windows	
@@ -43,9 +43,9 @@ mod4 + {h, j, k, l}
 mod4 + ctrl + {h, j, k, l}
 	wmv {-80 0, 0 80, 0 -80, 80 0} $(pfw)
 
-# tile
-mod4 + t
-  tile $(pfw)
+# split 2 windows
+mod4 + s
+  split $(pfw)
 
 # switchgrid
 mod4 + shift + t
@@ -103,21 +103,24 @@ alt + w
 ## volume 
 alt + shift + {equal,minus,F8} 
   ~/bin/volume {+,-,!}; \
-    popvol %\{c\} $(~/bin/volume level)
+    popper $(~/bin/volume level)
+    #popper %\{c\} $(~/bin/volume level)
 
 ## music
 mod4 + shift + equal
   ~/bin/music +; \
-  popmus %\{c\} '' $(~/bin/music artist)
+  popper '' $(~/bin/music artist)
+  #popper %\{c\} '' $(~/bin/music artist)
 
 mod4 + shift + minus
   ~/bin/music -; \
-  popmus %\{c\} '' $(~/bin/music artist)
+  popper '' $(~/bin/music artist)
 
 mod4 + shift + Home
   ~/bin/music play; \
-  popmus %\{c\} '' $(~/bin/music title)
+  popper '' $(~/bin/music title)
+  #popper %\{c\} '' $(~/bin/music title)
 
 mod4 + shift + ctrl + Home
   ~/bin/music pause; \
-  popmus %\{c\} '' $(~/bin/music title)
+  popper '' $(~/bin/music title)
