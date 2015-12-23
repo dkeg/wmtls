@@ -7,7 +7,7 @@
 # depends bbdr
 
 . $HOME/bin/colr
-. $HOME/wmtls/bbdr
+. $HOME/inspin/bbdr
 
 # border width
 BW=${BW:-2}
