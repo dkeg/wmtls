@@ -29,7 +29,6 @@ mod4 + p
 
 alt + {_,shift +}b
   {vimb,firefox}
-  sleep 3 && xdotool key "mod4 + shift + 2" $(pfw)
 
 alt + n
   leafpad
