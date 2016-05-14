@@ -1,6 +1,10 @@
 ## sxhkd keybinds
 ## dkeg 2015
 
+## reload sxhkd
+mod4 + Escape
+  pkill -USR1 -x sxhkd
+
 ## kill the session
 mod4 + ctrl + q 
   pkill xinit 
@@ -8,13 +12,14 @@ mod4 + ctrl + q
 ## kill active window
 alt + q 
 	killw $(pfw)
+	#xdo close $(pfw)
 
 ## general 
 alt + p
    popstat	
 
-mod4 + Return
-  urxvtc
+#mod4 + Return
+#  xterm 
 
 alt + Return
   urxvt
@@ -23,15 +28,17 @@ mod4 + p
   demon	
 
 alt + {_,shift +}b
-  {vimb,conkeror}
-  #touch $HOME/tmp/groups/groups.2
-  #sleep 1 && xdotool key "mod4 + shift + 2" $(pfw)
+  {vimb,firefox}
+  sleep 3 && xdotool key "mod4 + shift + 2" $(pfw)
 
 alt + n
   leafpad
 
 alt + d
-  popper %\{c\} $(date  +'%R  %d %b')
+  popper ' ' $(date  +'%R'), $(date +' %b %d')
+
+alt + shift + d
+  wallblur
 
 ## manipulating
 # move windows	
@@ -57,7 +64,7 @@ mod4 + shift + {h, j, k, l}
 
 # fast resize windows
 mod4 + ctrl + shift + {h, j, k, l} 
-	wrs {-80 0, 0 80, 0 -80, 80 0} $(pfw)
+	wrs {-40 0, 0 40, 0 -40, 40 0} $(pfw)
 
 ## cycling
 alt + {h,j,k,l}
@@ -88,6 +95,9 @@ mod4 + {y,u,b,n,g}
 alt + {_,shift + }f
   max -{m,f} $(pfw)
 
+mod4 {_,shift + }f
+  max -p $(pfw)
+
 ## max horizontal and vertical like (cwm and 2bwm)
 alt + {_,shift +}m
   max -{v,h} $(pfw)
@@ -104,13 +114,11 @@ alt + w
 alt + shift + {equal,minus,F8} 
   ~/bin/volume {+,-,!}; \
     popper $(~/bin/volume level)
-    #popper %\{c\} $(~/bin/volume level)
 
 ## music
 mod4 + shift + equal
   ~/bin/music +; \
   popper '' $(~/bin/music artist)
-  #popper %\{c\} '' $(~/bin/music artist)
 
 mod4 + shift + minus
   ~/bin/music -; \

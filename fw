@@ -7,14 +7,21 @@
 # get wall from .xinitrc & set attributes
 #wall=$(cat ~/.xinitrc|grep hsetroot|cut -d ' ' -f3|awk '{sub(/&/,"");print}')
 #wall=$(cat ~/.xinitrc|grep hsetroot|awk '{sub(/&/,"");print}')
-BLUR=40
-BRT="-0.05"
-
+BLUR=20
+CON="0.7"
+BRT="-0.02"
+#dir=$HOME/tmp
+#back=$(convert $wall -blur $BLUR $tmp/$pic)
+#back=convert "$wall" -blur ${1:-$BLUR} "$dir"/tmpwall.jpg
 # bg effects on new window
 effect(){
+    #hsetroot -fill $back 
     #$wallp -brightness ${1:-$BRT}
     #$wallp -brightness ${1:-$BRT} -blur ${1:-$BLUR}
+    #$wallp -blur ${1:-$BLUR} -brightness ${1:-$BRT}
     $wallp -blur ${1:-$BLUR}
+    #hsetroot -fill $back
+    #$act $opt ${1:-$back}
 }
 
 file=fcs

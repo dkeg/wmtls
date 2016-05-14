@@ -10,11 +10,12 @@
 . $HOME/inspin/bbdr
 
 # border width
-BW=${BW:-2}
+#BW=${BW:-5}
+BW=${BW:-5}
 
 # border color
 ACTIVE=${ACTIVE:-0x$bb}
-#ACTIVE=${ACTIVE:-0x$cyn} 
+#ACTIVE=${ACTIVE:-0x$wht} 
 INACTIVE=${INACTIVE:-0x$blk}
 
 # get current window id
@@ -37,6 +38,8 @@ setborder() {
     case $1 in
         active)   chwb -s $BW -c $ACTIVE $2 ;;
         inactive) chwb -s $BW -c $INACTIVE $2 ;;
+        #active)   chwb2 -O $wht -o 1 -i 3 -I $blk -c $ACTIVE $2 ;;
+        #inactive) chwb2 -O $blk -o 1 -i 3 -I $blk -c $INACTIVE $2 ;;
     esac
 }
 
